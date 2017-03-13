@@ -36,9 +36,7 @@ class NewVisitorTest(unittest.TestCase):
         # When he hits enter the page updates and now the page lists
         # "1: buy new water bottle and cage" as an item in the to-do list
         inputbox.send_keys(Keys.ENTER)
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1: buy new water bottle and cage', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: buy new water bottle and cage')
 
         # There is still a text box inviting him to enter another item
         # he adds 'clean bicycle'
@@ -47,10 +45,8 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # The page updates again and he can now see both items
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn('1: buy new water bottle and cage', [row.text for row in rows])
-        self.assertIn('1: clean', [row.text for row in rows])
+        self.check_for_row_in_list_table('1: buy new water bottle and cage')
+        self.check_for_row_in_list_table('2: clean bicycle')
 
         # He wonders whether the site will remember his list, then he see's
         # that the site has generated a unique url for him, there is some explanatory
@@ -58,6 +54,12 @@ class NewVisitorTest(unittest.TestCase):
         self.fail("Finish the tests")
 
         # He visits that url - his to-do list is still there
+
+    # Helper methods ------
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
 
 if __name__ == '__main__':
     unittest.main()
