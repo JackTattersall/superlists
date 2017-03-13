@@ -24,12 +24,10 @@ class HomePageTest(TestCase):
 
         expected_html = render_to_string('home.html')
         expected_html = remove('csrfmiddlewaretoken', expected_html)
-        print(expected_html)
 
         response_html = remove('csrfmiddlewaretoken', response.content.decode())
-        print(response_html)
 
-        self.assertEqual(response_html, expected_html, expected_html + "\n\n\n\n" + response_html)
+        self.assertEqual(response_html, expected_html)
 
     def test_homepage_can_save_a_POST_request(self):
         request = HttpRequest()
@@ -37,6 +35,10 @@ class HomePageTest(TestCase):
         request.POST['item_text'] = 'A new list item'   # post this text into the named input 'item_text'
 
         response = home_page(request)                   # capture the response
+
+        self.assertEqual(Item.objects.count(), 1)       # check that 1 new item has been saved to the database
+        new_item = Item.objects.first()                 # grabs the first entry
+        self.assertEqual(new_item.text, 'A new list item')
 
         # assert that the input text appears in the response html
         self.assertIn('A new list item', response.content.decode())
@@ -47,6 +49,11 @@ class HomePageTest(TestCase):
         )
 
         self.assertIn('A new list item', expected_html)
+
+    def test_home_page_only_saves_items_when_necessary(self):
+        request = HttpRequest()
+        home_page(request)
+        self.assertEqual(Item.objects.count(), 0)
 
 class ItemModelTest(TestCase):
 
