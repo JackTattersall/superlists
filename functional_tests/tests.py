@@ -1,9 +1,10 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest, time
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -16,7 +17,7 @@ class NewVisitorTest(unittest.TestCase):
 
         # Jack has heard about a new cool to-do list app
         # He goes to check out its homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # He Notices the page title and header mentions to-do lists
         self.assertIn('To-Do', self.browser.title)
@@ -64,8 +65,6 @@ class NewVisitorTest(unittest.TestCase):
 
         self.assertIn(row_text, [row.text for row in rows])
 
-if __name__ == '__main__':
-    unittest.main()
 
 
 
