@@ -37,6 +37,8 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter the page updates and now the page lists
         # "1: buy new water bottle and cage" as an item in the to-do list
         inputbox.send_keys(Keys.ENTER)
+        jack_lists_url = self.browser.current_url
+        self.assertRegex(jack_lists_url, '/lists/.+')
         self.check_for_row_in_list_table('1: buy new water bottle and cage')
 
         # There is still a text box inviting him to enter another item
@@ -49,12 +51,35 @@ class NewVisitorTest(LiveServerTestCase):
         self.check_for_row_in_list_table('1: buy new water bottle and cage')
         self.check_for_row_in_list_table('2: clean bicycle')
 
-        # He wonders whether the site will remember his list, then he see's
-        # that the site has generated a unique url for him, there is some explanatory
-        # text to that effect.
-        self.fail("Finish the tests")
+        # Now a user Nicole comes along to the site
 
-        # He visits that url - his to-do list is still there
+        # We use a new browser session to make sure no information
+        # of Jack's is coming through from cookies etc
+        self.browser.quit()
+        self.browser = webdriver.Firefox()
+
+        # Nicole visits the homepage, there is no sign of Jack's list
+        self.browser.get(self.live_server_url)
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('buy new water bottle and cage', page_text)
+        self.assertNotIn('clean bicycle', page_text)
+
+        # Nicole starts a new list by entering a new item, she is
+        # less interesting than Jack
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Buy Milk')
+        inputbox.send_keys(Keys.ENTER)
+
+        # Nicole gets her own unique url
+        nicole_lists_url = self.browser.current_url
+        self.assertRegex(nicole_lists_url, '/lists/.+')
+        self.assertNotEqual(jack_lists_url, nicole_lists_url)
+
+        # Again there is no sight of Jack's list
+        page_text = self.browser.find_element_by_tag_name('body').text
+        self.assertNotIn('buy new water bottle and cage', page_text)
+        self.assertIn('Buy Milk', page_text)
+
 
     # Helper methods ------
     def check_for_row_in_list_table(self, row_text):
