@@ -35,11 +35,12 @@ class NewVisitorTest(unittest.TestCase):
 
         # When he hits enter the page updates and now the page lists
         # "1: buy new water bottle and cage" as an item in the to-do list
-        inputbox.send_keys(Keys.Enter)
+        inputbox.send_keys(Keys.ENTER)
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: buy new water bottle and cage' for row in rows)
+            any(row.text == '1: buy new water bottle and cage' for row in rows),
+            "New item did not appear in table"
         )
 
         # There is still a text box inviting him to enter another item
