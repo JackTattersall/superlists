@@ -62,18 +62,25 @@ class ListAndItemsModelTest(TestCase):
 
 class ListViewTest(TestCase):
 
-    def test_displays_all_items(self):
-        list_ = List.objects.create()
-        Item.objects.create(text='item1', list=list_)
-        Item.objects.create(text='item2', list=list_)
+    def test_displays_all_items_for_that_list(self):
+        correct_list = List.objects.create()
+        Item.objects.create(text='item1', list=correct_list)
+        Item.objects.create(text='item2', list=correct_list)
 
-        response = self.client.get('/lists/only-list/')
+        other_list = List.objects.create()
+        Item.objects.create(text='other list item1', list=other_list)
+        Item.objects.create(text='other list item2', list=other_list)
+
+        response = self.client.get('/lists/%d/' % correct_list.id)
 
         self.assertContains(response, 'item1')
         self.assertContains(response, 'item2')
+        self.assertNotContains(response, 'other list item1')
+        self.assertNotContains(response, 'other list item2')
 
     def test_uses_list_template(self):
-        response = self.client.get('/lists/only-list/')
+        list_ = List.objects.create()
+        response = self.client.get('/lists/%d/' % list_.id)
         self.assertTemplateUsed(response, 'list.html')
 
 
@@ -95,8 +102,10 @@ class NewListTets(TestCase):
             data={'item_text': 'A new list item'}
         )
 
-        # assert that the post redirects to '/'
-        self.assertRedirects(response, '/lists/only-list/')
+        new_list = List.objects.first()
+
+        # assert that the post redirects to
+        self.assertRedirects(response, '/lists/%d/' % new_list.id)
 
 # <editor-fold desc = "Helper Functions" >
 # Function that removes a line from a string if the line contains 'rem' and removes empty lines also
