@@ -37,7 +37,7 @@ class NewVisitorTest(LiveServerTestCase):
         # When he hits enter the page updates and now the page lists
         # "1: buy new water bottle and cage" as an item in the to-do list
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(0.2)
+        time.sleep(0.1)
         jack_lists_url = self.browser.current_url
         self.assertRegex(jack_lists_url, '/lists/.+')
         self.check_for_row_in_list_table('1: buy new water bottle and cage')
