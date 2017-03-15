@@ -11,6 +11,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         for arg in sys.argv:
             if 'liveserver' in arg:
                 cls.server_url = 'http://' + arg.split('=')[1]
+                cls.live_server_url = ''
                 return
         super().setUpClass()
         cls.server_url = cls.live_server_url
@@ -51,7 +52,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # When he hits enter the page updates and now the page lists
         # "1: buy new water bottle and cage" as an item in the to-do list
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(0.1)
+        time.sleep(0.5)
         jack_lists_url = self.browser.current_url
         self.assertRegex(jack_lists_url, '/lists/.+')
         self.check_for_row_in_list_table('1: buy new water bottle and cage')
@@ -84,7 +85,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy Milk')
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(0.2)
+        time.sleep(0.5)
 
         # Nicole gets her own unique url
         nicole_lists_url = self.browser.current_url
