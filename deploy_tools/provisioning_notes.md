@@ -16,7 +16,7 @@ eg, on ubuntu:
 	* see nginx.template.conf
 	* replace SITENAME with, sitename
 eg
-    sed "s/SITENAME/superlists.chillyroad.info/g" \
+    sed "s/SITE/superlists.chillyroad.info/g" \
     deploy_tools/nginx.template.conf | sudo tee \
     /etc/nginx/sites-available/superlists.chillyroad.info
 
@@ -29,7 +29,7 @@ eg
 	* see gunicorn-systemctl.template.service
 	* replace Path names
 eg
-    sed "s/SITENAME/superlists.chillyroad.info/g" \
+    sed "s/SITE/superlists.chillyroad.info/g" \
     deploy_tools/gunicorn-systemctl.template.service | sudo tee \
     /etc/lib/systemd/system/gunicorn-superlists.service
 
