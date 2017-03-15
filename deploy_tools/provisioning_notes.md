@@ -44,3 +44,7 @@ Assume we hav a user account at /home/username
       ~ source
       ~ static
       ~ virtualenv
+
+## Useful commands
+    * run fab by
+    fab -i /Users/administrator/Desktop/PemKeys/pythonServer.pem -u ubuntu deploy:host=ubuntu@superlists.chillyroad.info
