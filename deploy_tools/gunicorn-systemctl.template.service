@@ -1,0 +1,11 @@
+[Unit]
+Description=Job that starts gunicorn running SITE
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/sites/SITE/source
+ExecStart=/home/ubuntu/sites/SITE/virtualenv/bin/gunicorn --bind unix:/tmp/SITE.socket superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
