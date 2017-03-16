@@ -31,7 +31,7 @@ eg
 eg
     sed "s/SITE/superlists.chillyroad.info/g" \
     deploy_tools/gunicorn-systemctl.template.service | sudo tee \
-    /etc/lib/systemd/system/gunicorn-superlists.service
+    /lib/systemd/system/SITE.service
 
 ## Folder structure
 Assume we hav a user account at /home/username
