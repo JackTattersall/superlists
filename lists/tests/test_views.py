@@ -4,30 +4,22 @@ from django.test import TestCase
 from django.core.urlresolvers import resolve
 from django.http import HttpRequest
 from django.template.loader import render_to_string
-from lists.views import home_page
-from lists.models import Item, List
+from ..views import home_page
+from ..models import Item, List
+from ..forms import ItemForm
 import re
 
 
 # Create your tests here.
 class HomePageTest(TestCase):
 
-    # resolves that the function called when the route '/' is navigated to is home_page
-    def test_url_resolves_to_home_page_view(self):
-        found = resolve('/')
+    def test_home_page_renders_home_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'base.html')
 
-        self.assertEqual(found.func, home_page)
-
-    def test_home_page_returns_correct_html(self):
-        request = HttpRequest()            # create a request object
-        response = home_page(request)      # pass it to our home_page view and store the response html
-
-        expected_html = render_to_string('home.html')
-        expected_html = remove('csrfmiddlewaretoken', expected_html)
-
-        response_html = remove('csrfmiddlewaretoken', response.content.decode())
-
-        self.assertEqual(response_html, expected_html)
+    def test_home_page_uses_item_form(self):
+        response = self.client.get('/')
+        self.assertIsInstance(response.context['form'], ItemForm)
 
 
 class ListViewTest(TestCase):

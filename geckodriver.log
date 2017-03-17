@@ -1217,3 +1217,55 @@ See /usr/include/servers/bootstrap_defs.h for the error codes.
 1489744790424	Marionette	INFO	New connections will no longer be accepted
 [Child 5350] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
 [Child 5350] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1489748761405	Marionette	INFO	Listening on port 63952
+1489748761713	Marionette	WARN	TLS certificate errors will be ignored for this session
+1489748763025	Marionette	WARN	Using deprecated data structure for setting timeouts
+2017-03-17 11:06:03.145 plugin-container[6457:126890] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x9037, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:06:03.147 plugin-container[6457:126890] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x912f, name = 'com.apple.CFPasteboardClient'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:06:03.148 plugin-container[6457:126890] void __CFPasteboardSetup() : Failed to allocate communication port for com.apple.CFPasteboardClient; this is likely due to sandbox restrictions
+1489748773325	Marionette	INFO	New connections will no longer be accepted
+[Child 6457] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+[Child 6457] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1489748775565	Marionette	INFO	Listening on port 64016
+1489748775866	Marionette	WARN	TLS certificate errors will be ignored for this session
+1489748777221	Marionette	WARN	Using deprecated data structure for setting timeouts
+2017-03-17 11:06:17.321 plugin-container[6463:127543] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x903f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:06:17.321 plugin-container[6463:127543] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x4d2f, name = 'com.apple.CFPasteboardClient'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:06:17.322 plugin-container[6463:127543] void __CFPasteboardSetup() : Failed to allocate communication port for com.apple.CFPasteboardClient; this is likely due to sandbox restrictions
+1489748787563	Marionette	INFO	New connections will no longer be accepted
+[Child 6463] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+[Child 6463] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1489748962594	Marionette	INFO	Listening on port 64155
+1489748962898	Marionette	WARN	TLS certificate errors will be ignored for this session
+1489748964265	Marionette	WARN	Using deprecated data structure for setting timeouts
+2017-03-17 11:09:24.386 plugin-container[6512:128727] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x8e3f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:09:24.392 plugin-container[6512:128727] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x5107, name = 'com.apple.CFPasteboardClient'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:09:24.392 plugin-container[6512:128727] void __CFPasteboardSetup() : Failed to allocate communication port for com.apple.CFPasteboardClient; this is likely due to sandbox restrictions
+1489749091325	Marionette	INFO	Listening on port 64266
+1489749091626	Marionette	WARN	TLS certificate errors will be ignored for this session
+1489749092957	Marionette	WARN	Using deprecated data structure for setting timeouts
+2017-03-17 11:11:33.081 plugin-container[6552:129444] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x8f3f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:11:33.084 plugin-container[6552:129444] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x9127, name = 'com.apple.CFPasteboardClient'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:11:33.084 plugin-container[6552:129444] void __CFPasteboardSetup() : Failed to allocate communication port for com.apple.CFPasteboardClient; this is likely due to sandbox restrictions
+1489749103345	Marionette	INFO	New connections will no longer be accepted
+[Child 6552] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+[Child 6552] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+1489749105478	Marionette	INFO	Listening on port 64328
+1489749105775	Marionette	WARN	TLS certificate errors will be ignored for this session
+1489749107097	Marionette	WARN	Using deprecated data structure for setting timeouts
+2017-03-17 11:11:47.196 plugin-container[6558:130058] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x8f3f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:11:47.197 plugin-container[6558:130058] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x8f43, name = 'com.apple.CFPasteboardClient'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2017-03-17 11:11:47.197 plugin-container[6558:130058] void __CFPasteboardSetup() : Failed to allocate communication port for com.apple.CFPasteboardClient; this is likely due to sandbox restrictions
+1489749117472	Marionette	INFO	New connections will no longer be accepted
+[Child 6558] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
+[Child 6558] ###!!! ABORT: Aborting on channel error.: file /builds/slave/m-rel-m64-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2143
