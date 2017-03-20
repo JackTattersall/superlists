@@ -11,12 +11,18 @@
 
 <body>
     <div class="container">
+
+        <nav class="navbar navbar-default" role="navigation">
+            <a class="navbar-brand" href="/">Superlists</a>
+            <a class="btn navbar-btn navbar-right" id="id_login" href="#">Sign in</a>
+        </nav>
+
         <div class="row">
             <div class="col-md-6 offset-3 jumbotron">
                 <div class="text-center">
                     <h1>{% block header_text %}{% endblock %}</h1>
                     <form method="post" novalidate action="{% block form_action %}{% endblock %}">
-                        {{ form.text }}
+                        {{ form.as_p }}
                         {% csrf_token %}
                         {% if form.errors %}
                             <div class="form-group has-error text-left">
