@@ -16,7 +16,10 @@
                 <div class="text-center">
                     <h1>{% block header_text %}{% endblock %}</h1>
                     <form method="post" novalidate action="{% block form_action %}{% endblock %}">
-                        {{ form.text }}
+                        {% for item in form %}
+                            {{ item.label }}{{ item }}
+                        {% endfor %}
+                        {% block button %}{% endblock %}
                         {% csrf_token %}
                         {% if form.errors %}
                             <div class="form-group has-error text-left">
@@ -35,6 +38,8 @@
             </div>
         </div>
     </div>
+    {% block logout_button %}{% endblock %}
+
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="/static/list.js"></script>
 </body>

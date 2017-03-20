@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block header_text %}Please sign in!{% endblock %}
+
+{% block form_action %}{% url 'login' %}{% endblock %}
+
+{% block button %}<button id="id_sign_in" type="submit">Sign in</button>{% endblock %}

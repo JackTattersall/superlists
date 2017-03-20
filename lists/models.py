@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -20,3 +21,6 @@ class Item(models.Model):
     def __str__(self):
         return self.text
 
+
+class UserModel(User):
+    pass

@@ -10,6 +10,7 @@ class NewVisitorTest(FunctionalTest):
         # Edith has heard about a cool new online to-do app. She goes
         # to check out its homepage
         self.browser.get(self.live_server_url)
+        self.sign_in()
 
         # She notices the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)
@@ -48,6 +49,7 @@ class NewVisitorTest(FunctionalTest):
     def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith start a new to-do list
         self.browser.get(self.live_server_url)
+        self.sign_in()
         inputbox = self.get_item_input_box()
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
@@ -67,6 +69,7 @@ class NewVisitorTest(FunctionalTest):
         # Francis visits the home page.  There is no sign of Edith's
         # list
         self.browser.get(self.live_server_url)
+        self.sign_in()
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)

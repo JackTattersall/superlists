@@ -3,6 +3,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 import time
+from lists.models import UserModel
 
 
 MAX_WAIT = 10
@@ -15,6 +16,7 @@ class FunctionalTest(StaticLiveServerTestCase):
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
             setattr(self, 'live_server_url', 'http://' + staging_server)
+        UserModel.objects.create_superuser(username='jack', password='password321', email='jack@tatts')
 
     def tearDown(self):
         self.browser.quit()
@@ -47,6 +49,15 @@ class FunctionalTest(StaticLiveServerTestCase):
 
     def get_error_element(self):
         return self.browser.find_element_by_css_selector('.has-error')
+
+    def sign_in(self):
+        user_name_field = self.browser.find_element_by_id('id_username')
+        user_name_field.send_keys('jack')
+        password_field = self.browser.find_element_by_id('id_password')
+        password_field.send_keys('password321')
+        sign_in_button = self.browser.find_element_by_id('id_sign_in')
+        sign_in_button.click()
+        time.sleep(1)
 
 
 

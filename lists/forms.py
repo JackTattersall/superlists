@@ -1,6 +1,8 @@
 from django import forms
-from .models import Item
+from .models import Item, UserModel
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.forms import AuthenticationForm
 
 
 EMPTY_LIST_ERROR = "You can't have an empty list item"
@@ -18,6 +20,7 @@ class ItemForm(forms.models.ModelForm):
                 'class': 'form-control input-lg',
             })
         }
+        labels = {'text': _('')}
         error_messages = {
             'text': {'required': EMPTY_LIST_ERROR}
         }
@@ -42,3 +45,22 @@ class ExistingListItemForm(ItemForm):
 
     def save(self):
         return forms.models.ModelForm.save(self)
+
+
+class LoginForm(AuthenticationForm):
+
+    username = forms.CharField(label=_("Username"),
+                               max_length=30,
+                               widget=forms.TextInput(attrs={'class': 'form-control input-lg'}))
+
+    password = forms.CharField(label=_("Password"),
+                               max_length=30,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control input-lg'}))
+
+    UserModel = UserModel
+
+    error_messages = {
+        'invalid_login': _("Please enter a correct %(username)s and password. "
+                           "Note that both fields may be case-sensitive."),
+        'inactive': _("This account is inactive."),
+    }

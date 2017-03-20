@@ -12,4 +12,14 @@
     </table>
 {% endblock %}
 
+{% block logout_button %}
+<footer class="footer">
+    <div class="container text-center">
+        <form action="/logout">
+            <button class="btn btn-default btn-sm" type="submit">Logout</button>
+        </form>
+    </div>
+</footer>
+{% endblock %}
+
 
